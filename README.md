@@ -1,0 +1,2 @@
+# basicWebpackSetting
+basic webpack setting
