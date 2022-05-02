@@ -1,0 +1,62 @@
+// clearfix
+@mixin clearfix {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+@mixin screen($size) {
+    $desktop: "(min-width: 1024px)";
+    $tablet: "(min-width: 768px) and (max-width: 1023px)";
+    $mobile: "(max-width: 767px)";
+    @if $size == desktop {
+        @media only screen and #{$desktop} {
+        @content;
+        }
+    }
+    @else if $size == tablet {
+        @media only screen and #{$tablet} {
+        @content;
+        }
+    }
+    @else if $size == mobile {
+        @media only screen and #{$mobile} {
+        @content;
+        }
+    }
+    @else {
+        @media only screen and #{$size} {
+        @content;
+        }
+    }
+}
+
+// vertical centering
+@mixin center-vertical {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+// ellipsis line
+@mixin ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+@mixin ellipsis-muliple ($line) {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+// Gradients
+@mixin linear-gradient ($from, $to) {
+    background-color: $from;
+    background-image: -webkit-linear-gradient(top, $from, $to); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
+    background-image: linear-gradient(to bottom, $from, $to); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
